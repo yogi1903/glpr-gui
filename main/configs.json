@@ -1,0 +1,13 @@
+{
+    "app_title": "G-LPR",
+    "stylesheet_path": "stylesheet.qss",
+    "csv_file": "license_plates.csv",
+    "models": {
+        "license_plate": "models/bestbest.pt"
+    },
+    "camera": {
+        "index": 1,
+        "width": 1280,
+        "height": 720
+    }
+}
