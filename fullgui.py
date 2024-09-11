@@ -21,10 +21,8 @@ logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %
 
 # Load and Assign Stylesheet
 def load_stylesheet():
-    with open('styles.qss', 'r') as file:
+    with open('stylesheet.qss', 'r') as file:
         return file.read()
-
-
 stylesheet = load_stylesheet()
 
 class MainWindow(QMainWindow):

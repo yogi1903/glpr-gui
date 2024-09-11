@@ -16,320 +16,13 @@ from threading import Thread, Lock
 import time
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
-stylesheet = """
-    QWidget {
-        background-color: #f4e4ca;
-    }
-    QPushButton {
-        background-color: #007366;
-        color: #f4e4ca;
-        border-radius: 6px;
-        border: 1px solid #007366;
-        padding: 10px;
-        text-align: center;
-        font-family: 'Segoe UI';
-        font-size: 14px;
-        font-weight: bold;
-    }
-    QPushButton:hover {
-        background-color: #01371C;
-    }
-    QPushButton:pressed {
-        background-color: #309A65;
-    }
-    
-    QFormLayout {
-        margin: 20px;
-    }
-    QLabel {
-        color: #007366;
-        font-family: 'Segoe UI';
-        font-size: 14px;
-        font-weight: bold;
-        text-align: center;
-    }
-    QLineEdit {
-        border: 1px solid #007366;
-        background-color: #f4e4ca;
-        border-radius: 4px;
-        padding: 8px;
-        font-family: 'Segoe UI';
-        font-size: 14px;
-        color: #007366;
-    }
-    QLineEdit:focus {
-        color: #f4e4ca;
-        border-color: #309A65;
-        background-color: #007366;
-        font-family: 'Segoe UI';
-        font-size: 14px;
-        font-weight: bold;
-    }
-    QComboBox {
-        border: 1px solid #007366;
-        border-radius: 4px;
-        padding: 8px;
-        font-family: 'Segoe UI';
-        font-size: 14px;
-        color: #007366;
-        background-color: #f4e4ca;
-    }
-    QComboBox QAbstractItemView {
-        border: 1px solid #007366;
-        border-radius: 4px;
-        background-color: #f4e4ca;
-        selection-background-color: #046A38;
-        selection-color: #f4e4ca;
-    }
-    QComboBox::drop-down {
-        subcontrol-origin: padding;
-        subcontrol-position: top right;
-        width: 20px;
-        background-color: #f4e4ca;
-        border-left-width: 1px;
-        border-left-color: #007366;
-        border-left-style: solid;
-        border-top-right-radius: 4px;
-        border-bottom-right-radius: 4px;
-    }
-    QComboBox::down-arrow {
-        image: url(down_arrow.png);  /* You can use a custom down arrow image */
-    }
-    QListView {
-        background-color: #f4e4ca;
-        border: 1px solid #007366;
-        font-family: 'Segoe UI';
-        font-size: 14px;
-        color: #007366;
-        selection-background-color: #046A38;
-        selection-color: #f4e4ca;
-    }
-    QTableWidget {
-        background-color: #007366;;
-        border: 1px solid #007366;
-        border-radius: 4px;
-        font-family: 'Segoe UI';
-        font-size: 14px;
-        color: #f4e4ca;
-        gridline-color: #004038;
-    }
-    QHeaderView::section {
-        background-color: #007366;
-        color: #f4e4ca;
-        padding: 4px;
-        border: 1px solid #004038;
-        font-family: 'Segoe UI';
-        font-size: 14px;
-        font-weight: bold;
-    }
-    QTableWidget::item {
-        padding: 4px;
-        border: none;
-        background-color: #007366;
-    }
-    QTableWidget::item:selected {
-        background-color: #309A65;
-        color: #f4e4ca;
-    }
-    QTableWidget QTableCornerButton::section {
-        background-color: #007366;
-        border: 1px solid #004038;
-    }
-    QScrollBar:vertical {
-        border: 1px solid #004038;
-        background: #007366;
-        width: 15px;
-        margin: 22px 0 22px 0;
-    }
-    QScrollBar::handle:vertical {
-        background: #007366;
-        min-height: 20px;
-    }
-    QScrollBar::add-line:vertical {
-        border: 1px solid #007366;
-        background: #f4e4ca;
-        height: 20px;
-        subcontrol-position: bottom;
-        subcontrol-origin: margin;
-    }
-    QScrollBar::sub-line:vertical {
-        border: 1px solid #007366;
-        background: #f4e4ca;
-        height: 20px;
-        subcontrol-position: top;
-        subcontrol-origin: margin;
-    }
-    QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
-        border: 1px solid #007366;
-        width: 3px;
-        height: 3px;
-        background: #007366;
-    }
-    QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
-        background: none;
-    }
-    QListWidget{
-        background-color: #007366;;
-        border: 1px solid #007366;
-        border-radius: 4px;
-        font-family: 'Segoe UI';
-        font-size: 14px;
-        color: #f4e4ca;
-        gridline-color: #004038;
-    }
-    QDateEdit {
-    background-color: #f4e4ca;
-    color: #007366;
-    font-family: 'Segoe UI';
-    font-weight: bold;
-    font-size: 14px;
-    padding: 5px;
-    border: 1px solid #004038;
-    border-radius: 5px;
-    min-width: 100px;
-}
+# Load and Assign Stylesheet
+def load_stylesheet():
+    with open('stylesheet.qss', 'r') as file:
+        return file.read()
+stylesheet = load_stylesheet()
 
-QDateEdit::drop-down {
-    subcontrol-origin: padding;
-    subcontrol-position: top right;
-    width: 20px;
-    border: none;
-    background-color: #007366;
-}
-
-QDateEdit QAbstractItemView {
-    border: 1px solid #004038;
-    background-color: #007366;
-    selection-background-color: #004038;
-    selection-color: #f4e4ca;
-    color: #f4e4ca;
-}
-QCalendarWidget {
-    background-color: #007366;
-    color: #f4e4ca;
-    font-family: 'Segoe UI';
-    font-weight: bold;
-    border: 1px solid #004038;
-    border-radius: 5px;
-}
-
-QCalendarWidget QAbstractItemView {
-    border: 1px solid #004038;
-    background-color: #007366;
-    selection-background-color: #004038;
-    selection-color: #f4e4ca;
-    color: #f4e4ca;
-}
-
-QCalendarWidget QToolButton {
-    background-color: #007366;
-    border: none;
-    color: #f4e4ca;
-    font-family: 'Segoe UI';
-    font-weight: bold;
-}
-
-QCalendarWidget QToolButton::menu-indicator {
-    image: none; /* Remove the arrow */
-}
-
-QCalendarWidget QSpinBox {
-    background-color: #007366;
-    color: #f4e4ca;
-    font-family: 'Segoe UI';
-    font-weight: bold;
-    border: 1px solid #004038;
-}
-
-QCalendarWidget QSpinBox::up-button,
-QCalendarWidget QSpinBox::down-button {
-    background-color: #007366;
-    border: none;
-}
-
-QCalendarWidget QSpinBox::up-arrow,
-QCalendarWidget QSpinBox::down-arrow {
-    image: none; /* Remove the arrow */
-}
-
-QCalendarWidget QWidget#qt_calendar_navigationbar {
-    background-color: #007366;
-    border-bottom: 1px solid #004038;
-}
-
-QCalendarWidget QAbstractItemView::item {
-    background-color: #007366;
-    color: #f4e4ca;
-    border: 1px solid #007366;
-    border-radius: 5px;
-}
-
-QCalendarWidget QAbstractItemView::item:selected {
-    background-color: #004038;
-    color: #f4e4ca;
-}
-QTabWidget::pane {
-    border: 1px solid #007366;
-    background-color: #f4e4ca;
-    border-radius: 6px;
-}
-
-QTabWidget::tab-bar {
-    left: 5px;
-}
-
-QTabBar::tab {
-    background-color: #007366;
-    color: #f4e4ca;
-    border: 1px solid #004038;
-    border-bottom-color: #007366;
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
-    padding: 8px 12px;
-    margin-right: 2px;
-    font-family: 'Segoe UI';
-    font-size: 14px;
-    font-weight: bold;
-}
-
-QTabBar::tab:selected {
-    background-color: #f4e4ca;
-    color: #007366;
-    border: 1px solid #007366;
-    border-bottom-color: #f4e4ca;
-}
-
-QTabBar::tab:!selected {
-    margin-top: 2px;
-}
-
-QTabBar::tab:hover {
-    background-color: #01371C;
-    color: #f4e4ca;
-}
-
-QTabBar::tab:selected:hover {
-    background-color: #309A65;
-    color: #f4e4ca;
-}
-
-QTabWidget::tab-bar:top {
-    top: 1px;
-}f
-
-QTabWidget::tab-bar:bottom {
-    bottom: 1px;
-}
-
-QTabWidget::tab-bar:left {
-    right: 1px;
-}
-
-QTabWidget::tab-bar:right {
-    left: 1px;
-}
-"""
-
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
 class LicensePlateRecognitionApp(QMainWindow):
     def __init__(self):
@@ -339,6 +32,7 @@ class LicensePlateRecognitionApp(QMainWindow):
 
         self.csv_file = "license_plates.csv"
         self.is_processing = False
+        self.is_popup_open = False
 
         self.tab_widget = QTabWidget()
         self.setCentralWidget(self.tab_widget)
@@ -353,11 +47,16 @@ class LicensePlateRecognitionApp(QMainWindow):
         self.setup_reports_tab()
 
         self.cap = None
-        self.frame_buffer = deque(maxlen=1)  # Only keep the latest frame
-        self.buffer_lock = Lock()
+        self.frame_buffer = deque(maxlen=10)  # Buffer to hold up to 10 frames
+        self.capture_timer = QTimer(self)
+        self.capture_timer.timeout.connect(self.capture_frame)
+        self.display_timer = QTimer(self)
+        self.display_timer.timeout.connect(self.display_frame)
+        self.process_timer = QTimer(self)
+        self.process_timer.timeout.connect(self.process_frame)
 
         # Load YOLO model for license plates
-        self.license_plate_model = YOLO('bestbest.pt')
+        self.license_plate_model = YOLO('models\\bestbest.pt')
 
         # Initialize PaddleOCR
         self.ocr = PaddleOCR(use_angle_cls=True, lang='en', use_gpu=True)
@@ -416,51 +115,41 @@ class LicensePlateRecognitionApp(QMainWindow):
 
     def start_camera(self):
         if self.cap is None:
-            # self.cap = cv2.VideoCapture("rtsp://admin:abcd1234@192.168.1.250:554/cam/realmonitor?channel=1&subtype=0")
-            self.cap = cv2.VideoCapture(1)
+            self.cap = cv2.VideoCapture(1)  # Use 0 for default camera
             self.is_processing = True
-            self.stream_thread = Thread(target=self._stream_frames)
-            self.stream_thread.start()
-            self.processing_thread = Thread(target=self._process_frames)
-            self.processing_thread.start()
+            self.capture_timer.start(30)  # Capture frame every 30 ms
+            self.display_timer.start(30)  # Display frame every 30 ms
+            self.process_timer.start(50)  # Process frame every 50 ms
 
     def stop_camera(self):
         self.is_processing = False
-        if self.stream_thread:
-            self.stream_thread.join()
-        if self.processing_thread:
-            self.processing_thread.join()
+        self.capture_timer.stop()
+        self.display_timer.stop()
+        self.process_timer.stop()
         if self.cap:
             self.cap.release()
         self.cap = None
         self.camera_label.clear()
-
-    def _stream_frames(self):
-        while self.is_processing:
+        self.frame_buffer.clear()
+        
+    def capture_frame(self):
+        if self.cap and self.is_processing:
             ret, frame = self.cap.read()
             if ret:
-                with self.buffer_lock:
-                    self.frame_buffer.clear()
-                    self.frame_buffer.append(frame)
-            time.sleep(0.01)  # Small delay to prevent excessive CPU usage
+                self.frame_buffer.append(frame)
 
-    def _process_frames(self):
-        while self.is_processing:
-            with self.buffer_lock:
-                if self.frame_buffer:
-                    frame = self.frame_buffer.pop()
-                else:
-                    continue
-
+    def process_frame(self):
+        if self.is_processing and not self.is_popup_open and self.frame_buffer:
+            frame = self.frame_buffer[-1]  # Get the latest frame
             license_plates = self.detect_license_plates(frame)
             for box, license_plate_img in license_plates:
                 text = self.recognize_license_plate(license_plate_img)
                 if text and self.is_valid_license_plate(text):
+                    self.is_popup_open = True
                     self.show_popup(text, license_plate_img)
-                    break  # Exit the loop after showing the popup
+                    return  # Exit the method after showing the popup
 
             self.display_frame(frame)
-            time.sleep(0.03)  # Adjust this value to control processing rate
 
     def detect_license_plates(self, image):
         results = self.license_plate_model(image)
@@ -503,17 +192,19 @@ class LicensePlateRecognitionApp(QMainWindow):
 
         self.load_reports_data()
 
-    def display_frame(self, frame):
-        rgb_image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-        rgb_image = cv2.resize(rgb_image, (1280, 720))
-        h, w, ch = rgb_image.shape
-        bytes_per_line = ch * w
-        qt_image = QImage(rgb_image.data, w, h, bytes_per_line, QImage.Format.Format_RGB888)
-        pixmap = QPixmap.fromImage(qt_image)
-        self.camera_label.setPixmap(pixmap)
+    def display_frame(self):
+        if self.frame_buffer:
+            frame = self.frame_buffer[-1]  # Get the latest frame
+            rgb_image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+            rgb_image = cv2.resize(rgb_image, (1280, 720))
+            h, w, ch = rgb_image.shape
+            bytes_per_line = ch * w
+            qt_image = QImage(rgb_image.data, w, h, bytes_per_line, QImage.Format.Format_RGB888)
+            pixmap = QPixmap.fromImage(qt_image)
+            self.camera_label.setPixmap(pixmap)
 
     def resume_processing(self):
-        self.is_processing = True
+        self.is_popup_open = False
 
 class RecognitionPopup(QWidget):
     def __init__(self, recognized_text, license_plate_img, parent=None):
@@ -566,13 +257,11 @@ class RecognitionPopup(QWidget):
         self.parent.resume_processing()
         super().closeEvent(event)
 
-
 if __name__ == '__main__':
     os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'
     os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
     app = QApplication(sys.argv)
-    app.setStyleSheet(stylesheet)
     window = LicensePlateRecognitionApp()
     window.showMaximized()
     sys.exit(app.exec())
