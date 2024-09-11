@@ -9,7 +9,7 @@ class ManagePage(BasePage):
         buttons = [
             ("Add Vehicle", lambda: self.main_window.show_page('add')),
             ("Remove Vehicle", lambda: self.main_window.show_page('remove')),
-            ("Show all Vehicles", lambda: self.main_window.show_page('showall')),
+            ("Show all Vehicles", self.show_all_vehicles),  # Changed this line
         ]
 
         for text, method in buttons:
@@ -21,3 +21,8 @@ class ManagePage(BasePage):
 
     def go_back(self):
         self.main_window.show_page('main')
+
+    def show_all_vehicles(self):
+        # Implement the functionality to show all vehicles here
+        # For now, we'll just log a message
+        self.logger.info("Show all vehicles functionality not yet implemented")

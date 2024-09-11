@@ -1,0 +1,86 @@
+2024-09-11 21:47:48,167 - __main__ - ERROR - An error occurred: Configuration file not found: c:\Users\yogi2\lpr-gui\project\config.json
+Traceback (most recent call last):
+  File "c:\Users\yogi2\lpr-gui\project\config.py", line 8, in load_config
+    with open(config_path, 'r') as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'c:\\Users\\yogi2\\lpr-gui\\project\\config.json'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\yogi2\lpr-gui\project\main.py", line 25, in main
+    config = load_config()
+  File "c:\Users\yogi2\lpr-gui\project\config.py", line 11, in load_config
+    raise FileNotFoundError(f"Configuration file not found: {config_path}")
+FileNotFoundError: Configuration file not found: c:\Users\yogi2\lpr-gui\project\config.json
+2024-09-11 21:48:10,007 - __main__ - INFO - Configuration loaded successfully
+2024-09-11 21:48:13,431 - ui.main_window - INFO - Application closing
+2024-09-11 21:49:15,754 - __main__ - INFO - Configuration loaded successfully
+2024-09-11 21:49:21,814 - ui.main_window - INFO - Application closing
+2024-09-11 21:52:21,754 - __main__ - INFO - Configuration loaded successfully
+2024-09-11 21:52:21,775 - root - WARNING - Stylesheet not found: assets/styles/stylesheet.qss
+2024-09-11 21:52:24,705 - ui.main_window - INFO - Application closing
+2024-09-11 21:53:17,785 - __main__ - INFO - Configuration loaded successfully
+2024-09-11 21:53:17,804 - root - WARNING - Stylesheet not found: assets/styles/stylesheet.qss
+2024-09-11 21:53:25,148 - ui.main_window - INFO - Application closing
+2024-09-11 21:57:07,296 - __main__ - INFO - Configuration loaded successfully
+2024-09-11 21:57:07,316 - root - WARNING - Stylesheet not found: assets/styles/stylesheet.qss
+2024-09-11 21:57:11,229 - ui.main_window - INFO - Application closing
+2024-09-11 21:58:22,339 - __main__ - INFO - Configuration loaded successfully
+2024-09-11 21:58:22,365 - root - WARNING - Stylesheet not found: assets/styles/stylesheet.qss
+2024-09-11 21:58:34,096 - ui.main_window - INFO - Application closing
+2024-09-11 21:59:37,418 - __main__ - INFO - Configuration loaded successfully
+2024-09-11 21:59:37,444 - root - WARNING - Stylesheet not found: assets/styles/stylesheet.qss
+2024-09-11 21:59:41,030 - ui.main_window - WARNING - Attempted to show non-existent page: showall
+2024-09-11 21:59:41,863 - ui.main_window - INFO - Application closing
+2024-09-11 22:05:06,135 - __main__ - INFO - Configuration loaded successfully
+2024-09-11 22:05:06,155 - __main__ - INFO - Attempting to load stylesheet from: c:\Users\yogi2\lpr-gui\project\assets/styles/stylesheet.qss
+2024-09-11 22:05:06,164 - __main__ - INFO - Stylesheet loaded successfully. Length: 6612 characters
+2024-09-11 22:05:29,627 - ui.main_window - INFO - Application closing
+2024-09-11 22:05:47,544 - __main__ - INFO - Configuration loaded successfully
+2024-09-11 22:05:47,564 - __main__ - INFO - Attempting to load stylesheet from: c:\Users\yogi2\lpr-gui\project\assets/styles/stylesheet.qss
+2024-09-11 22:05:47,565 - __main__ - INFO - Stylesheet loaded successfully. Length: 6612 characters
+2024-09-11 22:05:55,030 - ui.main_window - INFO - Application closing
+2024-09-11 22:06:51,102 - __main__ - INFO - Configuration loaded successfully
+2024-09-11 22:06:51,122 - __main__ - INFO - Attempting to load stylesheet from: c:\Users\yogi2\lpr-gui\project\assets/styles/stylesheet.qss
+2024-09-11 22:06:51,123 - __main__ - INFO - Stylesheet loaded successfully. Length: 6612 characters
+2024-09-11 22:07:00,288 - ui.main_window - INFO - Application closing
+2024-09-11 22:08:42,538 - __main__ - INFO - Configuration loaded successfully
+2024-09-11 22:08:42,558 - __main__ - INFO - Attempting to load stylesheet from: c:\Users\yogi2\lpr-gui\project\assets/styles/stylesheet.qss
+2024-09-11 22:08:42,559 - __main__ - INFO - Stylesheet loaded successfully. Length: 6612 characters
+2024-09-11 22:08:55,651 - ui.main_window - INFO - Application closing
+2024-09-11 22:10:42,854 - __main__ - INFO - Configuration loaded successfully
+2024-09-11 22:10:42,873 - __main__ - INFO - Attempting to load stylesheet from: c:\Users\yogi2\lpr-gui\project\assets/styles/stylesheet.qss
+2024-09-11 22:10:42,875 - __main__ - INFO - Stylesheet loaded successfully. Length: 6612 characters
+2024-09-11 22:10:47,945 - ui.main_window - INFO - Application closing
+2024-09-11 22:11:03,292 - __main__ - INFO - Configuration loaded successfully
+2024-09-11 22:11:03,312 - __main__ - INFO - Attempting to load stylesheet from: c:\Users\yogi2\lpr-gui\project\assets/styles/stylesheet.qss
+2024-09-11 22:11:03,314 - __main__ - INFO - Stylesheet loaded successfully. Length: 6612 characters
+2024-09-11 22:11:11,891 - ui.main_window - INFO - Application closing
+2024-09-11 22:11:21,382 - __main__ - INFO - Configuration loaded successfully
+2024-09-11 22:11:21,403 - __main__ - INFO - Attempting to load stylesheet from: c:\Users\yogi2\lpr-gui\project\assets/styles/stylesheet.qss
+2024-09-11 22:11:21,405 - __main__ - INFO - Stylesheet loaded successfully. Length: 6612 characters
+2024-09-11 22:11:30,821 - ui.main_window - INFO - Application closing
+2024-09-11 22:11:54,150 - __main__ - INFO - Configuration loaded successfully
+2024-09-11 22:11:54,168 - __main__ - INFO - Attempting to load stylesheet from: c:\Users\yogi2\lpr-gui\project\assets/styles/stylesheet.qss
+2024-09-11 22:11:54,170 - __main__ - INFO - Stylesheet loaded successfully. Length: 6612 characters
+2024-09-11 22:11:58,831 - ui.main_window - INFO - Application closing
+2024-09-11 22:12:51,254 - __main__ - INFO - Configuration loaded successfully
+2024-09-11 22:12:51,274 - __main__ - INFO - Attempting to load stylesheet from: c:\Users\yogi2\lpr-gui\project\assets/styles/stylesheet.qss
+2024-09-11 22:12:51,275 - __main__ - INFO - Stylesheet loaded successfully. Length: 6612 characters
+2024-09-11 22:12:54,272 - ui.main_window - INFO - Application closing
+2024-09-11 22:12:59,862 - __main__ - INFO - Configuration loaded successfully
+2024-09-11 22:12:59,883 - __main__ - INFO - Attempting to load stylesheet from: c:\Users\yogi2\lpr-gui\project\assets/styles/stylesheet.qss
+2024-09-11 22:12:59,884 - __main__ - INFO - Stylesheet loaded successfully. Length: 6612 characters
+2024-09-11 22:13:06,075 - ui.main_window - INFO - Application closing
+2024-09-11 22:14:40,743 - __main__ - INFO - Configuration loaded successfully
+2024-09-11 22:14:40,767 - __main__ - INFO - Attempting to load stylesheet from: c:\Users\yogi2\lpr-gui\project\assets/styles/stylesheet.qss
+2024-09-11 22:14:40,768 - __main__ - INFO - Stylesheet loaded successfully. Length: 6612 characters
+2024-09-11 22:14:49,104 - ui.main_window - INFO - Application closing
+2024-09-11 22:16:47,270 - __main__ - INFO - Configuration loaded successfully
+2024-09-11 22:16:47,291 - __main__ - INFO - Attempting to load stylesheet from: c:\Users\yogi2\lpr-gui\project\assets/styles/stylesheet.qss
+2024-09-11 22:16:47,293 - __main__ - INFO - Stylesheet loaded successfully. Length: 6612 characters
+2024-09-11 22:16:57,809 - ui.main_window - WARNING - Attempted to show non-existent page: add
+2024-09-11 22:16:58,806 - ui.main_window - WARNING - Attempted to show non-existent page: add
+2024-09-11 22:16:59,182 - ui.main_window - WARNING - Attempted to show non-existent page: remove
+2024-09-11 22:16:59,489 - ui.pages.base_page - INFO - Show all vehicles functionality not yet implemented
+2024-09-11 22:17:16,049 - ui.main_window - INFO - Application closing
