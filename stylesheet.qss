@@ -1,0 +1,251 @@
+QWidget {
+        background-color: #f4e4ca;
+    }
+    QPushButton {
+        background-color: #007366;
+        color: #f4e4ca;
+        border-radius: 6px;
+        border: 1px solid #007366;
+        padding: 10px;
+        text-align: center;
+        font-family: 'Segoe UI';
+        font-size: 14px;
+        font-weight: bold;
+    }
+    QPushButton:hover {
+        background-color: #004038;
+    }
+    QPushButton:pressed {
+        background-color: #009987;
+    }
+
+    QFormLayout {
+        margin: 20px;
+    }
+    QLabel {
+        color: #007366;
+        font-family: 'Segoe UI';
+        font-size: 14px;
+        font-weight: bold;
+        text-align: center;
+    }
+    QLineEdit {
+        border: 1px solid #007366;
+        background-color: #f4e4ca;
+        border-radius: 4px;
+        padding: 8px;
+        font-family: 'Segoe UI';
+        font-size: 14px;
+        color: #007366;
+    }
+    QLineEdit:focus {
+        color: #f4e4ca;
+        border-color: #309A65;
+        background-color: #007366;
+        font-family: 'Segoe UI';
+        font-size: 14px;
+        font-weight: bold;
+    }
+    QComboBox {
+        border: 1px solid #007366;
+        border-radius: 4px;
+        padding: 8px;
+        font-family: 'Segoe UI';
+        font-size: 14px;
+        color: #007366;
+        background-color: #f4e4ca;
+    }
+    QComboBox QAbstractItemView {
+        border: 1px solid #007366;
+        border-radius: 4px;
+        background-color: #f4e4ca;
+        selection-background-color: #046A38;
+        selection-color: #f4e4ca;
+    }
+    QComboBox::drop-down {
+        subcontrol-origin: padding;
+        subcontrol-position: top right;
+        width: 20px;
+        background-color: #f4e4ca;
+        border-left-width: 1px;
+        border-left-color: #007366;
+        border-left-style: solid;
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+    }
+    QComboBox::down-arrow {
+        image: url(down_arrow.png);  /* You can use a custom down arrow image */
+    }
+    QListView {
+        background-color: #f4e4ca;
+        border: 1px solid #007366;
+        font-family: 'Segoe UI';
+        font-size: 14px;
+        color: #007366;
+        selection-background-color: #046A38;
+        selection-color: #f4e4ca;
+    }
+    QTableWidget {
+        background-color: #007366;;
+        border: 1px solid #007366;
+        border-radius: 4px;
+        font-family: 'Segoe UI';
+        font-size: 14px;
+        color: #f4e4ca;
+        gridline-color: #004038;
+    }
+    QHeaderView::section {
+        background-color: #007366;
+        color: #f4e4ca;
+        padding: 4px;
+        border: 1px solid #004038;
+        font-family: 'Segoe UI';
+        font-size: 14px;
+        font-weight: bold;
+    }
+    QTableWidget::item {
+        padding: 4px;
+        border: none;
+        background-color: #007366;
+    }
+    QTableWidget::item:selected {
+        background-color: #309A65;
+        color: #f4e4ca;
+    }
+    QTableWidget QTableCornerButton::section {
+        background-color: #007366;
+        border: 1px solid #004038;
+    }
+    QScrollBar:vertical {
+        border: 1px solid #004038;
+        background: #007366;
+        width: 15px;
+        margin: 22px 0 22px 0;
+    }
+    QScrollBar::handle:vertical {
+        background: #007366;
+        min-height: 20px;
+    }
+    QScrollBar::add-line:vertical {
+        border: 1px solid #007366;
+        background: #f4e4ca;
+        height: 20px;
+        subcontrol-position: bottom;
+        subcontrol-origin: margin;
+    }
+    QScrollBar::sub-line:vertical {
+        border: 1px solid #007366;
+        background: #f4e4ca;
+        height: 20px;
+        subcontrol-position: top;
+        subcontrol-origin: margin;
+    }
+    QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
+        border: 1px solid #007366;
+        width: 3px;
+        height: 3px;
+        background: #007366;
+    }
+    QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+        background: none;
+    }
+    QListWidget{
+        background-color: #007366;;
+        border: 1px solid #007366;
+        border-radius: 4px;
+        font-family: 'Segoe UI';
+        font-size: 14px;
+        color: #f4e4ca;
+        gridline-color: #004038;
+    }
+    QDateEdit {
+    background-color: #f4e4ca;
+    color: #007366;
+    font-family: 'Segoe UI';
+    font-weight: bold;
+    font-size: 14px;
+    padding: 5px;
+    border: 1px solid #004038;
+    border-radius: 5px;
+    min-width: 100px;
+}
+
+QDateEdit::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 20px;
+    border: none;
+    background-color: #007366;
+}
+
+QDateEdit QAbstractItemView {
+    border: 1px solid #004038;
+    background-color: #007366;
+    selection-background-color: #004038;
+    selection-color: #f4e4ca;
+    color: #f4e4ca;
+}
+QCalendarWidget {
+    background-color: #007366;
+    color: #f4e4ca;
+    font-family: 'Segoe UI';
+    font-weight: bold;
+    border: 1px solid #004038;
+    border-radius: 5px;
+}
+
+QCalendarWidget QAbstractItemView {
+    border: 1px solid #004038;
+    background-color: #007366;
+    selection-background-color: #004038;
+    selection-color: #f4e4ca;
+    color: #f4e4ca;
+}
+
+QCalendarWidget QToolButton {
+    background-color: #007366;
+    border: none;
+    color: #f4e4ca;
+    font-family: 'Segoe UI';
+    font-weight: bold;
+}
+
+QCalendarWidget QToolButton::menu-indicator {
+    image: none; /* Remove the arrow */
+}
+
+QCalendarWidget QSpinBox {
+    background-color: #007366;
+    color: #f4e4ca;
+    font-family: 'Segoe UI';
+    font-weight: bold;
+    border: 1px solid #004038;
+}
+
+QCalendarWidget QSpinBox::up-button,
+QCalendarWidget QSpinBox::down-button {
+    background-color: #007366;
+    border: none;
+}
+
+QCalendarWidget QSpinBox::up-arrow,
+QCalendarWidget QSpinBox::down-arrow {
+    image: none; /* Remove the arrow */
+}
+
+QCalendarWidget QWidget#qt_calendar_navigationbar {
+    background-color: #007366;
+    border-bottom: 1px solid #004038;
+}
+
+QCalendarWidget QAbstractItemView::item {
+    background-color: #007366;
+    color: #f4e4ca;
+    border: 1px solid #007366;
+    border-radius: 5px;
+}
+
+QCalendarWidget QAbstractItemView::item:selected {
+    background-color: #004038;
+    color: #f4e4ca;
+}
