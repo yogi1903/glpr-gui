@@ -1,0 +1,22 @@
+{
+    "app_title": "G-LPR",
+    "stylesheet_path": "../assets/styles/stylesheet.qss",
+    "database": {
+        "file": "../vehicle_database.db",
+        "manager_path": "src/database_manager.py"
+    },
+    "models": {
+        "license_plate": "../models/bestbest.pt"
+    },
+    "camera": {
+        "index": 1,
+        "width": 1280,
+        "height": 720
+    },
+    "images": {
+        "gitam_logo": "../assets/images/gitam_logo_green.jpeg",
+        "navy_logo": "../assets/images/indian_navy_logo.png"
+    },
+    "captured_images_dir": "../captured_images",
+    "license_plates_dir": "../license_plates"
+}
