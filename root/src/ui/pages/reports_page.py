@@ -222,7 +222,7 @@ class ReportsPage(BasePage):
     def copy_cell_content(self):
         selected_items = self.results_table.selectedItems()
         if selected_items:
-            clipboard = QApplication.clipboard()
+            clipboard = QApplication.clipboard() # type: ignore
             clipboard.setText(selected_items[0].text())
 
     def export_to_csv(self):

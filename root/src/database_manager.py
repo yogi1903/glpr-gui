@@ -11,6 +11,14 @@ class DatabaseManager:
         self.cursor = None
         self.connect()
         self.create_tables()
+    
+    def get_all_vehicles(self):
+        try:
+            self.cursor.execute("SELECT * FROM vehicles")
+            return self.cursor.fetchall()
+        except sqlite3.Error as e:
+            print(f"Error retrieving all vehicles: {e}")
+            return []
 
     def load_config(self, config_path):
         with open(config_path, 'r') as config_file:

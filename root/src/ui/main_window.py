@@ -6,6 +6,9 @@ from .pages.main_page import MainPage
 from .pages.detect_page import DetectPage
 from .pages.manage_page import ManagePage
 from .pages.reports_page import ReportsPage
+from .pages.show_all_vehicles_page import ShowAllVehiclesPage
+from .pages.add_page import AddPage
+from .pages.remove_page import RemovePage
 
 class MainWindow(QMainWindow):
     def __init__(self, config: Dict[str, Any]):
@@ -37,6 +40,9 @@ class MainWindow(QMainWindow):
                 'main': MainPage(self, "Main Page"),
                 'detect': DetectPage(self, "Detect"),
                 'manage': ManagePage(self, "Manage"),
+                'add': AddPage(self, "Add Vehicle"),
+                'remove': RemovePage(self, "Remove Vehicle"),
+                'show_all': ShowAllVehiclesPage(self, "All Vehicles"),
                 'reports': ReportsPage(self, "Reports")
             }
             for page in self.pages.values():
