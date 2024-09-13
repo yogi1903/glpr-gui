@@ -51,7 +51,7 @@ def main():
         app.setStyleSheet(stylesheet)
         
         window = MainWindow(config)
-        window.show()
+        window.showMaximized()
         sys.exit(app.exec())
     except Exception as e:
         logger.error(f"An error occurred: {str(e)}", exc_info=True)
