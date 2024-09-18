@@ -8,8 +8,7 @@ class ManagePage(BasePage):
     def setup_content(self):
         buttons = [
             ("Add Vehicle", lambda: self.main_window.show_page('add')),
-            ("Remove Vehicle", lambda: self.main_window.show_page('remove')),
-            ("Show all Vehicles", self.show_all_vehicles),  # Changed this line
+            ("Show all Vehicles", lambda: self.main_window.show_page('show_all')), 
         ]
 
         for text, method in buttons:

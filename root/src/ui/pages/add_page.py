@@ -1,5 +1,5 @@
 from PyQt6.QtWidgets import (QVBoxLayout, QHBoxLayout, QLabel, QPushButton, 
-                             QLineEdit, QMessageBox)
+                             QLineEdit, QMessageBox, QComboBox)
 from .base_page import BasePage
 from database_manager import get_database_manager
 
@@ -36,9 +36,10 @@ class AddPage(BasePage):
         self.owner_aadhar_input.setPlaceholderText("Owner Aadhar")
         layout.addWidget(self.owner_aadhar_input)
 
-        # Affiliation
-        self.affiliation_input = QLineEdit()
-        self.affiliation_input.setPlaceholderText("Affiliation")
+        # Affiliation (Dropdown)
+        self.affiliation_input = QComboBox()
+        self.affiliation_input.addItems(["Navy", "Non-Navy"])
+        layout.addWidget(QLabel("Affiliation:"))
         layout.addWidget(self.affiliation_input)
 
         # Add Vehicle Button
@@ -55,9 +56,9 @@ class AddPage(BasePage):
             vehicle_color = self.vehicle_color_input.text()
             owner_name = self.owner_name_input.text()
             owner_aadhar = self.owner_aadhar_input.text()
-            affiliation = self.affiliation_input.text()
+            affiliation = self.affiliation_input.currentText()
 
-            if not all([vehicle_number, vehicle_type, vehicle_color, owner_name, owner_aadhar, affiliation]):
+            if not all([vehicle_number, vehicle_type, vehicle_color, owner_name, owner_aadhar]):
                 raise ValueError("All fields are required")
 
             success = self.db_manager.add_vehicle(
@@ -74,8 +75,9 @@ class AddPage(BasePage):
 
     def clear_inputs(self):
         for widget in [self.vehicle_number_input, self.vehicle_type_input, self.vehicle_color_input,
-                       self.owner_name_input, self.owner_aadhar_input, self.affiliation_input]:
+                       self.owner_name_input, self.owner_aadhar_input]:
             widget.clear()
+        self.affiliation_input.setCurrentIndex(0)  # Reset to first option
 
     def go_back(self):
         self.main_window.show_page('manage')

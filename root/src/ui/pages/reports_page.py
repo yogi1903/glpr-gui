@@ -101,7 +101,7 @@ class ReportsPage(BasePage):
         self.prev_button.clicked.connect(self.previous_page)
         button_layout.addWidget(self.prev_button)
 
-        self.next_button = QPushButton("←")
+        self.next_button = QPushButton("→")
         self.next_button.setFixedSize(40, 30)
         self.next_button.clicked.connect(self.next_page)
         button_layout.addWidget(self.next_button)

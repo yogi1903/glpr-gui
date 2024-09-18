@@ -1,6 +1,6 @@
 import cv2
 import os
-from PyQt6.QtWidgets import QLabel, QPushButton, QHBoxLayout, QVBoxLayout, QLineEdit, QWidget
+from PyQt6.QtWidgets import QLabel, QPushButton, QHBoxLayout, QVBoxLayout, QLineEdit, QWidget, QMessageBox
 from PyQt6.QtGui import QImage, QPixmap
 from PyQt6.QtCore import QTimer, Qt
 from .base_page import BasePage
@@ -141,6 +141,25 @@ class DetectPage(BasePage):
         # Log entry/exit
         self.db_manager.log_entry_exit(corrected_text)
 
+    def go_to_add_vehicle(self, plate_number):
+        self.main_window.show_page('add')
+        # Populate the vehicle number field in the add page
+        add_page = self.main_window.pages['add']
+        add_page.vehicle_number_input.setText(plate_number)
+
+    def show_vehicle_details(self, plate_number):
+        vehicle = self.db_manager.get_vehicle(plate_number)
+        if vehicle:
+            details = f"Vehicle Number: {vehicle[0]}\n"
+            details += f"Type: {vehicle[1]}\n"
+            details += f"Color: {vehicle[2]}\n"
+            details += f"Owner Name: {vehicle[3]}\n"
+            details += f"Owner Aadhar: {vehicle[4]}\n"
+            details += f"Affiliation: {vehicle[5]}"
+            QMessageBox.information(self, "Vehicle Details", details)
+        else:
+            QMessageBox.warning(self, "Vehicle Not Found", f"No details found for vehicle number {plate_number}")
+
     def resume_processing(self):
         self.is_popup_open = False
 
@@ -158,7 +177,7 @@ class RecognitionPopup(QWidget):
         super().__init__(parent)
         self.parent = parent
         self.setWindowTitle("License Plate Recognized")
-        self.setGeometry(200, 200, 400, 300)
+        self.setGeometry(200, 200, 400, 400)  # Increased height to accommodate two rows of buttons
         self.setWindowFlags(Qt.WindowType.FramelessWindowHint)
         self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground)
 
@@ -172,16 +191,32 @@ class RecognitionPopup(QWidget):
         self.text_input = QLineEdit(recognized_text)
         layout.addWidget(self.text_input)
 
-        button_layout = QHBoxLayout()
+        # First row of buttons
+        button_layout1 = QHBoxLayout()
+        
         save_button = QPushButton("Save")
         save_button.clicked.connect(self.save_text)
-        button_layout.addWidget(save_button)
+        button_layout1.addWidget(save_button)
 
         cancel_button = QPushButton("Cancel")
         cancel_button.clicked.connect(self.close)
-        button_layout.addWidget(cancel_button)
+        button_layout1.addWidget(cancel_button)
 
-        layout.addLayout(button_layout)
+        layout.addLayout(button_layout1)
+
+        # Second row of buttons
+        button_layout2 = QHBoxLayout()
+
+        add_to_db_button = QPushButton("Save and Add to Database")
+        add_to_db_button.clicked.connect(self.save_and_add_to_database)
+        button_layout2.addWidget(add_to_db_button)
+
+        show_details_button = QPushButton("Show Details")
+        show_details_button.clicked.connect(self.show_details)
+        button_layout2.addWidget(show_details_button)
+
+        layout.addLayout(button_layout2)
+
         self.setLayout(layout)
 
         self.recognized_text = recognized_text  # Save the recognized text
@@ -199,6 +234,16 @@ class RecognitionPopup(QWidget):
         self.parent.save_to_database(self.recognized_text, corrected_text)
         self.parent.resume_processing()  # Resume processing before closing
         self.close()  # Close the popup
+
+    def save_and_add_to_database(self):
+        corrected_text = self.text_input.text()
+        self.parent.save_to_database(self.recognized_text, corrected_text)
+        self.parent.go_to_add_vehicle(corrected_text)
+        self.close()
+
+    def show_details(self):
+        plate_number = self.text_input.text()
+        self.parent.show_vehicle_details(plate_number)
 
     def closeEvent(self, event):
         self.parent.resume_processing()
